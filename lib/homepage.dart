@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'components/groceryitem.dart';
+import 'Cartpage.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -10,6 +11,13 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: () =>
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return const Cartpage();
+        }
+        )),
+      backgroundColor: Colors.blueGrey,
+      child: const Icon(Icons.shopping_basket),),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,7 +59,8 @@ class HomePage extends StatelessWidget {
               itemCount: value.shopItems.length,
                 gridDelegate:
                 const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2
+                crossAxisCount: 2,
+                  childAspectRatio: 1/1.4,
       ),
                 itemBuilder: (context, index) {
               return GroceryItem(
@@ -59,6 +68,7 @@ class HomePage extends StatelessWidget {
                 itemPrice: value.shopItems[index][1],
                 imagePath: value.shopItems[index][2],
                 color: value.shopItems[index][3],
+                onPressed: (){},
       );
       }
       );
@@ -68,6 +78,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       ),
-    );
+      );
+
   }
 }
