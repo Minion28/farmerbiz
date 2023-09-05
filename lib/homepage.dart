@@ -1,9 +1,10 @@
-import 'package:faremrbiz/models/cart.dart';
+import 'models/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'components/groceryitem.dart';
 import 'Cartpage.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -68,7 +69,9 @@ class HomePage extends StatelessWidget {
                 itemPrice: value.shopItems[index][1],
                 imagePath: value.shopItems[index][2],
                 color: value.shopItems[index][3],
-                onPressed: (){},
+                onPressed: (){
+                  Provider.of<Cart>(context, listen:false).addCart(index);
+                },
       );
       }
       );

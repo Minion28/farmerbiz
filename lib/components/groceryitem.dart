@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:faremrbiz/models/cart.dart';
+
 
 class GroceryItem extends StatelessWidget{
   final String itemName;
@@ -36,7 +36,7 @@ class GroceryItem extends StatelessWidget{
           Text(itemName),
           MaterialButton(onPressed: onPressed,
           color: color,
-          child: Text('Ksh' + itemPrice,
+          child: Text('Ksh ' + itemPrice,
           style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold

@@ -8,11 +8,29 @@ class Cart extends ChangeNotifier{
     ["Oranges", "10.00", "lib/images/oranges.jpg", Colors.yellowAccent],
     ["Potatoes", "500.00", "lib/images/potatoes.jpg", Colors.brown],
     ["Chicken", "800.00", "lib/images/chicken.png", Colors.white30],
-    ["Cow", "4.00", "lib/images/cow.png", Colors.grey]
+    ["Cow", "40,000.00", "lib/images/cow.png", Colors.grey]
   ];
 
-  
+  final List _cartItems = [];
 
   get shopItems => _shopItems;
 
+  get cartItems => _cartItems;
+
+  void addCart(int index) {
+    _cartItems.add(_shopItems[index]);
+    notifyListeners();
+}
+void removeCart(int index) {
+  _cartItems.removeAt(index);
+  notifyListeners();
+}
+
+String calculateTotal() {
+    double totalPrice = 0;
+    for (int i = 0; 1< _cartItems.length; i++) {
+      totalPrice += double.parse(_cartItems[i][1]);
+    }
+    return totalPrice.toStringAsFixed(2);
+}
 }
